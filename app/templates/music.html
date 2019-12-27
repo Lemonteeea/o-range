@@ -1,14 +1,14 @@
-{% extends "base_w.html" %}
+{% extends "b_article.html" %}
 
-{% block content %}
-        <div style='text-align:center'>
-		<div style='font-family:arial;font-size:25px;width:85%;display:inline-block;'>
-			<div style='width:500px;margin:5%;float:left'>	
+{% block artcontent %}
+        <div>
+		<div style='font-family:arial;font-size:25px;width:85%;display:inline-block;margin-top:15%'>
+			<div style='width:450px;float:left'>	
                                 <img style='width:100%' src='static/Pictures/jay.jpg'>
 
                         </div>
 
-			<div style="margin:5%;float:left;width:500px;">
+			<div style="float:left;width:450px;">
 				<div style='margin-top:20%'>
 					<form action='' method='post'>
 						{{ form.hidden_tag() }}
@@ -17,7 +17,7 @@
 						{{ form.submit() }}
 					</form>
 				</div>
-				<div style="margin-top:20%;">
+				<div style="margin-top:20%;margin-left:5%">
 					<audio src="static/Musics/{{ music }}.mp3" controls="controls" style='height:30px;width:100%;'>
                         		        Your browser does not support the audio element.
 					</audio>

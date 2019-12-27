@@ -64,3 +64,8 @@ def music():
     if form.validate_on_submit():
         return render_template('music.html', title = 'Musics', form=form, music = music)
     return render_template('music.html', title = 'Musics', form=form, music = 'kblk')
+
+@app.route('/comingsoon',methods = ['Get','Post'])
+def comingsoon():
+    return render_template('comingsoon.html', title = 'Comingsoon')
+
