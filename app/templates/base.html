@@ -1,5 +1,8 @@
 <html>
         <head>
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		<title>{{ title }} - O'range</title>
 		<link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
@@ -7,17 +10,18 @@
 			.head_line {
 				font-family: 'Lilita One', Arial;
 				position:relative;
-				height:10%;
+				height:70px;
 				width:100%;
 				margin:0;
 				background:#2A2A2A;
+				text-align:left;
 			}
 
 
 			.user_link{
-				position:absolute;
-				right:3%;
-				bottom:10px;
+				margin-top:35px;
+				margin-right:3%;
+				float:right;
 			}
 
                 	.user_link a{
@@ -33,13 +37,13 @@
 
 
 			.app_link{
-				position:absolute;
-				left:20%;
-				bottom:10px;
+				margin-top:35px;
+				margin-left:5%;
+				float:left;
 			}
 
 			.app_link a{
-                                color:#FFFFFF;
+				color:#FFFFFF;
                                 font-size:20px;
                                 margin-right:40px;
                         }
@@ -76,47 +80,31 @@
         <body style='padding:0;margin:0;background:#F9F9F9'>
                 <div style='height:100%;width:100%;text-align:center;'>
 			<div class=head_line>
-                        	<div style='font-size:40px;position:absolute;bottom:10px;left:3%;cursor:hand' onClick="location.href='{{ url_for('index') }}'">
+                        	<div style='float:left;font-size:35px;margin-left:3%;margin-top:20px;cursor:hand;' onClick="location.href='{{ url_for('index') }}'">
 					<span style='color:#F16745'>O'</span>
 					<span style='color:#FFC65D'>Range</span>
                         	</div>
 
-					<div class='app_link'>
-                                        	<a href="{{ url_for('comingsoon') }}">Life</a>
-                                	        <a href="{{ url_for('comingsoon') }}">Skills</a>
-                        	                <a href="{{ url_for('music') }}">Musics</a>
-                	                        <a href="{{ url_for('comingsoon') }}">Apps</a>
-        	                                <a href="{{ url_for('comingsoon') }}">Discuss</a>
-	                                </div>
+				<div class='app_link'>
+                                       	<a href="{{ url_for('comingsoon') }}">Life</a>
+                               	        <a href="{{ url_for('comingsoon') }}">Skills</a>
+                       	                <a href="{{ url_for('music') }}">Musics</a>
+               	                        <a href="{{ url_for('comingsoon') }}">Apps</a>
+       	                                <a href="{{ url_for('comingsoon') }}">Discuss</a>
+				</div>
 
-					<div class='user_link'>
-                   
-                                                <span style"padding-left:5px"> </span>
-                                                {% if current_user.is_anonymous %}
-						<a href="{{ url_for('register') }}">Regist</a>
-                                                <a href="{{ url_for('login') }}">Login</a>
-                                                {% else %}
-                                                <a href="{{ url_for('user', username = current_user.username) }}">Home</a>
-                                                <a href="{{ url_for('logout') }}">Logout</a>
-                                                {% endif %}
-                                        </div>
-
-
-
+				<div class='user_link'>
+                                        {% if current_user.is_anonymous %}
+					<a href="{{ url_for('register') }}">Regist</a>
+                                        <a href="{{ url_for('login') }}">Login</a>
+                                        {% else %}
+					<a href="{{ url_for('user', username = current_user.username) }}">Home</>
+					<a href="{{ url_for('logout') }}">Logout</a>
+                                        {% endif %}
+                                </div>
 
 			</div>
 		
-			<div style=''>
-                        	{% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                <ul>
-                                {% for message in messages %}
-                                <li>{{ message }}</li>
-                                	{% endfor %}
-                                </ul>
-                                {% endif %}
-                                {% endwith %}
-			</div>
 				{% block content %}{% endblock %}
 		</div>
 

@@ -3,6 +3,18 @@
 
 <div style="text-align:left;margin-left:5%;margin-top:10%">
         {% block formcontent %}{% endblock %}
+	<div style='color:red;margin:0'>
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                        {% endfor %}
+                                </ul>
+                                {% endif %}
+                                {% endwith %}
+         </div>
+
 </div>
 
 <div class='social_link'>
