@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired,ValidationError,Email,EqualTo
 from app.models import User
 
@@ -31,3 +31,7 @@ class MusicselectForm(FlaskForm):
     music_list=[("kblk","开不了口"),("ljf","龙卷风"),("ah","暗号"),('caihong','彩虹'),('feng','枫'),('jda','简单爱'),('ylxb','一路向北'),('azxyq','爱在西元前'),('qlx','七里香'),('gq','搁浅'),('hdgq','回到过去'),('xq','星晴'),('jk','借口')]
     music = SelectField('选择歌曲',choices=music_list)
     submit = SubmitField('就听这首吧')
+
+class BlogForm(FlaskForm):
+    body = TextAreaField('Content')
+    submit = SubmitField('Post')

@@ -3,8 +3,9 @@ from flask import render_template,flash,redirect,url_for
 from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import MusicselectForm
+from app.forms import BlogForm
 from flask_login import current_user, login_user, logout_user,login_required
-from app.models import User
+from app.models import User,Post
 from werkzeug.urls import url_parse
 from flask import request
 from app import database
@@ -62,8 +63,19 @@ def music():
     form = MusicselectForm()
     music = form.music.data
     if form.validate_on_submit():
-        return render_template('music.html', title = 'Musics', form=form, music = music)
+        return render_template('music.html', title = 'Musics', form = form, music = music)
     return render_template('music.html', title = 'Musics', form=form, music = 'kblk')
+
+@app.route('/newblog',methods = ['Get','Post'])
+def newblog():
+    form = BlogForm()
+    if form.validate_on_submit():
+        post = Post(title = 'test',body = form.body.data)
+        database.session.add(post)
+        database.session.commit()
+        flash('post succeed')
+    return render_template('new_article.html', title = 'Edit Blog', form = form)
+
 
 @app.route('/comingsoon',methods = ['Get','Post'])
 def comingsoon():
