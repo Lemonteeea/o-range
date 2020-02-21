@@ -1,9 +1,14 @@
 {% extends 'b_article.html' %}
 
 {% block artcontent %}
-	<h1>{{ user.username }}</h1>
-	<hr>
+<div style="display:inline-block;width:90%;height:100%;position:relative;top:41px;margin-bottom:41px;">
+	<h1>{{ user.username }}'s blog</h1>
+	<br>
 	{% for post in posts %}
+	<h2>{{ post.title }}</h2>
+	<div style="text-align:left">
 	{{ post.body|safe }}
+	</div>
 	{% endfor %}
+</div>
 {% endblock %}

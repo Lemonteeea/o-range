@@ -33,5 +33,6 @@ class MusicselectForm(FlaskForm):
     submit = SubmitField('就听这首吧')
 
 class BlogForm(FlaskForm):
-    body = TextAreaField('Content')
+    title = StringField('Title',validators=[DataRequired()])
+    body = TextAreaField('Content',validators=[DataRequired()])
     submit = SubmitField('Post')

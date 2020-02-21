@@ -67,7 +67,7 @@ def music():
 def newblog():
     form = BlogForm()
     if form.validate_on_submit():
-        post = Post(title = 'test',body = form.body.data)
+        post = Post(title = form.title.data,body = form.body.data)
         database.session.add(post)
         database.session.commit()
         flash('post succeed')
