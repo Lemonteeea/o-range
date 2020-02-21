@@ -1,11 +1,9 @@
 {% extends 'b_article.html' %}
 
 {% block artcontent %}
-	<h1>User:{{ user.username }}</h1>
+	<h1>{{ user.username }}</h1>
 	<hr>
 	{% for post in posts %}
-	<p>
-	{{ post.author.username }} : <b>{{ post.body }}</b>
-	</p>
+	{{ post.body|safe }}
 	{% endfor %}
 {% endblock %}
