@@ -1,4 +1,4 @@
-from app import database
+from app import db
 from app import login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -10,12 +10,15 @@ def load_user(id):
     return User.query.get(int(id))
 
 
-class User(UserMixin,database.Model):
+class User(UserMixin,db.Model):
 
-    id = database.Column(database.Integer, primary_key = True)
-    username = database.Column(database.String(64), index = True, unique = True)
-    email = database.Column(database.String(120), index = True, unique = True)
-    password_hash = database.Column(database.String(128))
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(64), index = True, unique = True)
+    email = db.Column(db.String(120), index = True, unique = True)
+    password_hash = db.Column(db.String(128))
+    blog = db.relationship('Blog', backref='author', lazy='dynamic')
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -27,11 +30,12 @@ class User(UserMixin,database.Model):
         return '<User {}>'.format(self.username)
 
 
-class Post(database.Model):
-    id = database.Column(database.Integer, primary_key = True)
-    title = database.Column(database.String(60))
-    body = database.Column(database.Text)
-    timestamp = database.Column(database.DateTime, index = True, default = datetime.utcnow)
+class Blog(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(60))
+    body = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index = True, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

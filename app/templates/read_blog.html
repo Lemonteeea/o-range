@@ -1,0 +1,19 @@
+{% extends 'b_article.html' %}
+
+{% block artcontent %}
+
+<div style="display:inline-block;width:90%;height:100%;position:relative;top:41px;margin-bottom:41px;">
+        <ul>
+        	<li class="list-group-item">
+			<h2>{{ blog.title }}</h2>
+        	</li>
+		<li class="list-group-item" style="text-align:left">
+			{{ blog.body|safe }}
+		</li>
+        </ul>
+</div>
+
+
+
+{% endblock %}
+

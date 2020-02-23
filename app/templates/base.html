@@ -1,49 +1,50 @@
 <html>
         <head>
-		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-		<title>{{ title }} - O'range</title>
-		<link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+                <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+                <title>{{ title }} - O'range</title>
+                <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
                 <style>
-			.head_line {
-				font-family: 'Lilita One', Arial;
-				position:relative;
-				height:70px;
-				width:100%;
-				margin:0;
-				background:#2A2A2A;
-				text-align:left;
-			}
+
+                        .head_line {
+                                font-family: 'Lilita One', Arial;
+                                position:relative;
+                                height:70px;
+                                width:100%;
+                                margin:0;
+                                background:#2A2A2A;
+                                text-align:left;
+                        }
 
 
-			.user_link{
-				margin-top:35px;
-				margin-right:3%;
-				float:right;
-			}
+                        .user_link{
+                                margin-right:3%;
+                                float:right;
+                        }
 
-                	.user_link a{
-                		color:#FFFFFF;
-                		font-size:20px;
-				margin-right:40px;
-                	}
-
-                	.user_link a:link{
-                		color:#FFFFFF;
-                		text-decoration:none;
-                	}
+                        .user_link a{
+                                font-size:20px;
+                                margin-right:40px;
+                                color:#FFFFFF;
+                        }
+                        .user_link a:link{
+                                color:#FFFFFF;
+                                text-decoration:none;
+                        }
 
 
-			.app_link{
-				margin-top:35px;
-				margin-left:5%;
-				float:left;
-			}
+                        .app_link{
+                                margin-left:5%;
+                                float:left;
+                        }
 
-			.app_link a{
-				color:#FFFFFF;
+                        .app_link a{
+                                color:#FFFFFF;
                                 font-size:20px;
                                 margin-right:40px;
                         }
@@ -54,20 +55,20 @@
                         }
 
 
-			.welcome {
-				width:100%;
-				height:100%;
-				color:#FFFFFF;
-				background:#2A2A2A;
-				text-align:center;
-				font-size:80px;
-				font-family: 'Lilita One', Verdana, Arial;
-			}
+                        .welcome {
+                                width:100%;
+                                height:100%;
+                                color:#FFFFFF;
+                                background:#2A2A2A;
+                                text-align:center;
+                                font-size:80px;
+                                font-family: 'Lilita One', Verdana, Arial;
+                        }
 
-			.social_link{
-                       		position:fixed;
-				bottom:3%;
-				right:3%;
+                        .social_link{
+                                position:fixed;
+                                bottom:3%;
+                                right:3%;
                         }
 
                         .social_link svg{
@@ -75,37 +76,64 @@
                         }
 
 
-                	</style>
+                        </style>
         </head>
+
         <body style='height:100%;width:100%;margin:0;padding:0;background:#F9F9F9;position:fixed;overflow:hidden'>
-                <div style='height:100%;width:100%;text-align:center;'>
-			<div class=head_line>
-                        	<div style='float:left;font-size:35px;margin-left:3%;margin-top:20px;cursor:hand;' onClick="location.href='{{ url_for('index') }}'">
-					<span style='color:#F16745'>O'</span>
-					<span style='color:#FFC65D'>Range</span>
+		<div style="background:#2A2A2A;font-family: 'Lilita One', Arial;">
+
+                        <nav class="navbar navbar-expand-lg navbar-dark">
+
+				<div class="navbar-brand" style='float:left;font-size:30px;margin-left:3%;cursor:hand;height:60px' onClick="location.href='{{ url_for('index') }}'">
+                                	<span style='color:#F16745'>O'</span>
+                                	<span style='color:#FFC65D'>Range</span>
                         	</div>
 
-				<div class='app_link'>
-                                       	<a href="{{ url_for('comingsoon') }}">Life</a>
-                               	        <a href="{{ url_for('comingsoon') }}">Skills</a>
-                       	                <a href="{{ url_for('music') }}">Musics</a>
-               	                        <a href="{{ url_for('comingsoon') }}">Apps</a>
-       	                                <a href="{{ url_for('newblog') }}">Discuss</a>
-				</div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarformobile" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                </button>
 
-				<div class='user_link'>
-                                        {% if current_user.is_anonymous %}
-					<a href="{{ url_for('register') }}">Regist</a>
-                                        <a href="{{ url_for('login') }}">Login</a>
-                                        {% else %}
-					<a href="{{ url_for('user', username = current_user.username) }}">Home</>
-					<a href="{{ url_for('logout') }}">Logout</a>
-                                        {% endif %}
+
+                                <div class="collapse navbar-collapse" id="navbarformobile" style="margin-left:50px;font-size:20px">
+                                        <ul class="navbar-nav w-100 mr-auto mt-2 mt-lg-0">
+                                                <li class="nav-item">
+                                                        <a class="nav-item nav-link" style="margin-left:30px" href="{{ url_for('blog') }}">Blogs</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                        <a class="nav-item nav-link" style="margin-left:30px" href="{{ url_for('music') }}">Musics</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                        <a class="nav-item nav-link" style="margin-left:30px" href="{{ url_for('comingsoon') }}">Pictures</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                        <a class="nav-item nav-link" style="margin-left:30px" href="{{ url_for('comingsoon') }}">Discuss</a>
+                                                </li>
+						{% if current_user.is_anonymous %}
+                                		<a class="nav-item nav-link ml-auto dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                                		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        		<a class="dropdown-item" type="button" href="{{ url_for('register') }}">Regist</a>
+                                        		<a class="dropdown-item" type="button" href="{{ url_for('login') }}">Login</a>
+                                		</div>
+                                		{% else %}
+                                		<a class="nav-item nav-link ml-auto dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user</a>
+                                        	<div class="my-sm-0 dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                	<div class="dropdown-item">Singed in as<br>
+                                                        	<a class="dropdown-item" href="{{ url_for('user', username = current_user.username) }}" style="font-weight: 600">{{ current_user.username }}</a>
+                                                	</div>
+                                                	<div class="dropdown-divider">
+                                        	        </div>
+                                	                <a class="dropdown-item" type="button" href="#">Profile</a>
+                        	                        <a class="dropdown-item" type="button" href="{{ url_for('logout') }}">Logout</a>
+                	                        </div>
+		                                {% endif %}
+
+					</ul>
                                 </div>
-
-			</div>
-		
-			{% block content %}{% endblock %}
+                        </nav>
 		</div>
+		{% block content %}{% endblock %}
         </body>
+
 </html>
+
+

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired,ValidationError,Email,EqualTo
 from app.models import User
 
@@ -35,4 +35,8 @@ class MusicselectForm(FlaskForm):
 class BlogForm(FlaskForm):
     title = StringField('Title',validators=[DataRequired()])
     body = TextAreaField('Content',validators=[DataRequired()])
+    submit = SubmitField('Post')
+
+class BlogdeleteForm(FlaskForm):
+    blog_id = IntegerField('Blog_Id',validators=[DataRequired()])
     submit = SubmitField('Post')
