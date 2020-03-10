@@ -28,7 +28,10 @@ def login():
             flash('username/password error')
             return redirect(url_for('login'))
         login_user(user, remember = form.remember_me.data)
-        return redirect(url_for('user', username = form.username.data))
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc !='':
+            next_page = url_for('user',username = user.username)
+        return redirect(next_page)
     return render_template('login.html', title = 'Sign In', form = form)
 
 @app.route('/logout')
@@ -77,6 +80,7 @@ def newblog():
         db.session.commit()
         flash('Blog posted successfully')
     return render_template('new_blog.html', title = 'Edit Blog', form = form)
+
 
 @app.route('/delete_blog/<blog_id>')
 def deleteblog(blog_id):
